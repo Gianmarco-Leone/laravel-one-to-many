@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-name', $project->title)
+@section('page-name', $type->title)
 
 @section('content')
 
@@ -12,15 +12,15 @@
             </div>
         @endif
 
-        <h1 class="my-4">Dettaglio - {{$project->title}}</h1>
+        <h1 class="my-4">Dettaglio - {{$type->label}}</h1>
 
         <div class="d-flex justify-content-center">
-            <a href="{{route('admin.projects.index')}}" class="btn btn-primary me-3">
+            <a href="{{route('admin.types.index')}}" class="btn btn-primary me-3">
                 Torna alla lista
             </a>
     
-            <a href="{{route('admin.projects.edit', $project)}}" class="btn btn-primary ms-3">
-                Modifica progetto
+            <a href="{{route('admin.types.edit', $type)}}" class="btn btn-primary ms-3">
+                Modifica tipologia
             </a>
         </div>
 
@@ -29,15 +29,12 @@
                 <div class="row justify-content-center">
                     <div class="col-4 my-5">
                         <p class="fw-semibold">
-                            {{$project->type?->label}}
+                            {{$type->label}}
                         </p>
-                    </div>
-                    <div class="col-12">
-                        <img src="{{$project->getImageUri()}}" alt="{{$project->title}}" width="300">
                     </div>
                     <div class="col-4 my-5">
                         <p class="fw-semibold">
-                            {{$project->description}}
+                            {{$type->color}}
                         </p>
                     </div>
                 </div>

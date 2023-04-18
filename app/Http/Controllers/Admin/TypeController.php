@@ -72,7 +72,7 @@ class TypeController extends Controller
     // * Funzione per visualizzare dettaglio elemento DB
     public function show(Type $type)
     {
-        return view('admin.types.show', compact('types'));
+        return view('admin.types.show', compact('type'));
     }
 
 

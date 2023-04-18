@@ -44,7 +44,7 @@ Route::middleware('auth')
         ->parameters(['projects' => 'project:slug']);
 
         // * Risorsa Type
-        Route::resource('types', TypeController::class);
+        Route::resource('types', TypeController::class)->except(['show']);
     });
 
 // * Rotte profilo
