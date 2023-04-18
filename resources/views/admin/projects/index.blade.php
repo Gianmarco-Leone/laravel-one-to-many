@@ -19,7 +19,7 @@
 
         <div class="col-3 text-end">
             <a href="{{route('admin.projects.create')}}" class="btn btn-primary ms-auto">
-                Aggiungi progetto
+                Crea nuovo progetto
             </a>
             
         <a href="{{ url('admin/projects/trash') }}" class="btn btn-danger ms-auto">Cestino</a>

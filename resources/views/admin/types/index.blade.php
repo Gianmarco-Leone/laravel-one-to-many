@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-name', 'Lista progetti')
+@section('page-name', 'Lista tipologie')
 
 @section('content')
 
@@ -14,15 +14,16 @@
 
     <div class="row justify-content-between align-items-center my-4">
         <div class="col">
-            <h1>I Progetti</h1>
+            <h1>Le Tipologie</h1>
         </div>
 
         <div class="col-3 text-end">
-            <a href="{{route('admin.projects.create')}}" class="btn btn-primary ms-auto">
-                Aggiungi progetto
+            <a href="{{route('admin.types.create')}}" class="btn btn-primary ms-auto">
+                Crea nuova tipologia
             </a>
             
-        <a href="{{ url('admin/projects/trash') }}" class="btn btn-danger ms-auto">Cestino</a>
+            <!-- Force Delete -->
+            {{-- <a href="{{ url('admin/types/trash') }}" class="btn btn-danger ms-auto">Cestino</a> --}}
         </div>
     </div>
     
@@ -30,7 +31,7 @@
         <thead>
             <tr>
                 <th scope="col">
-                    <a href="{{route('admin.projects.index')}}?sort=id&order={{$sort == 'id' && $order != 'desc' ? 'desc' : 'asc'}}">
+                    <a href="{{route('admin.types.index')}}?sort=id&order={{$sort == 'id' && $order != 'desc' ? 'desc' : 'asc'}}">
                         ID
                         @if ($sort == 'id')
                         <i class="bi bi-caret-down-fill d-inline-block @if($order == 'desc') rotate-180 @endif"></i>
@@ -38,31 +39,23 @@
                     </a>
                 </th>
                 <th scope="col">
-                    <a href="{{route('admin.projects.index')}}?sort=title&order={{$sort == 'title' && $order != 'desc' ? 'desc' : 'asc'}}">
-                        Titolo
-                        @if ($sort == 'title')
-                        <i class="bi bi-caret-down-fill d-inline-block @if($order == 'desc') rotate-180 @endif"></i>
-                        @endif
-                    </a>
-                </th>
-                <th scope="col">
-                    <a href="{{route('admin.projects.index')}}?sort=type_id&order={{$sort == 'type_id' && $order != 'desc' ? 'desc' : 'asc'}}">
+                    <a href="{{route('admin.types.index')}}?sort=label&order={{$sort == 'label' && $order != 'desc' ? 'desc' : 'asc'}}">
                         Tipologia
-                        @if ($sort == 'type_id')
-                        <i class="bi bi-caret-down-fill d-inline-block @if($order == 'desc') rotate-180 @endif"></i>
+                        @if ($sort == 'label')
+                            <i class="bi bi-caret-down-fill d-inline-block @if($order == 'desc') rotate-180 @endif"></i>
                         @endif
                     </a>
                 </th>
                 <th scope="col">
-                    <a href="{{route('admin.projects.index')}}?sort=description&order={{$sort == 'description' && $order != 'desc' ? 'desc' : 'asc'}}">
-                        Descrizione
-                        @if ($sort == 'description')
-                        <i class="bi bi-caret-down-fill d-inline-block @if($order == 'desc') rotate-180 @endif"></i>
+                    <a href="{{route('admin.types.index')}}?sort=color&order={{$sort == 'color' && $order != 'desc' ? 'desc' : 'asc'}}">
+                        Colore
+                        @if ($sort == 'color')
+                            <i class="bi bi-caret-down-fill d-inline-block @if($order == 'desc') rotate-180 @endif"></i>
                         @endif
                     </a>
                 </th>
                 <th scope="col">
-                    <a href="{{route('admin.projects.index')}}?sort=created_at&order={{$sort == 'created_at' && $order != 'desc' ? 'desc' : 'asc'}}">
+                    <a href="{{route('admin.types.index')}}?sort=created_at&order={{$sort == 'created_at' && $order != 'desc' ? 'desc' : 'asc'}}">
                         Creazione
                         @if ($sort == 'created_at')
                         <i class="bi bi-caret-down-fill d-inline-block @if($order == 'desc') rotate-180 @endif"></i>
@@ -70,7 +63,7 @@
                     </a>
                 </th>
                 <th scope="col">
-                    <a href="{{route('admin.projects.index')}}?sort=updated_at&order={{$sort == 'updated_at' && $order != 'desc' ? 'desc' : 'asc'}}">
+                    <a href="{{route('admin.types.index')}}?sort=updated_at&order={{$sort == 'updated_at' && $order != 'desc' ? 'desc' : 'asc'}}">
                         Ultima modifica
                         @if ($sort == 'updated_at')
                         <i class="bi bi-caret-down-fill d-inline-block @if($order == 'desc') rotate-180 @endif"></i>
@@ -81,29 +74,24 @@
             </tr>
         </thead>
         <tbody>
-            @forelse($projects as $project)
+            @forelse($types as $type)
                 <tr>
-                    <th scope="row">{{$project->id}}</th>
-                    <td>{{$project->title}}</td>
+                    <th scope="row">{{$type->id}}</th>
+                    <td>{{$type->label}}</td>
+                    <td>{{$type->color}}</td>
+                    <td>{{$type->created_at}}</td>
+                    <td>{{$type->updated_at}}</td>
                     <td>
-                        <span class="badge rounded-pill" style="background-color: {{$project->type?->color}}">
-                            {{$project->type?->label}}
-                        </span>
-                    </td>
-                    <td>{{$project->getAbstract()}}</td>
-                    <td>{{$project->created_at}}</td>
-                    <td>{{$project->updated_at}}</td>
-                    <td>
-                        <a href="{{route('admin.projects.show', $project)}}" title="Mostra il progetto">
+                        <a href="{{route('admin.types.show', $type)}}" title="Mostra la tipologia">
                             <i class="bi bi-eye-fill"></i>
                         </a>
 
-                        <a href="{{route('admin.projects.edit', $project)}}" title="Modifica il progetto" class="mx-3">
+                        <a href="{{route('admin.types.edit', $type)}}" title="Modifica la tipologia" class="mx-3">
                             <i class="bi bi-pencil-fill"></i>
                         </a>
 
                         <!-- Bottone che triggera la modal -->
-                        <button class="bi bi-trash3-fill btn-icon text-danger" data-bs-toggle="modal" data-bs-target="#trash-project-{{$project->id}}" title="Cestina il progetto"></button>
+                        <button class="bi bi-trash3-fill btn-icon text-danger" data-bs-toggle="modal" data-bs-target="#delete-type-{{$type->id}}" title="Elimina la tipologia"></button>
                     </td>
                 </tr>
             @empty
@@ -114,34 +102,36 @@
         </tbody>
     </table>
 
-    {{ $projects->links() }}
+    {{ $types->links() }}
 
 </section>
 
 @endsection
 
 @section('modals')
-    @foreach($projects as $project)
+    @foreach($types as $type)
         <!-- Modal -->
-        <div class="modal fade" id="trash-project-{{$project->id}}" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal fade" id="delete-type-{{$type->id}}" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Attenzione!!!</h1>
+                        <h1 class="modal-title fs-5" id="delete-type-{{$type->id}}">Attenzione!!!</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Sei sicuro di voler spostare nel cestino il progetto <span class="fw-semibold">{{$project->title}}</span> ?
+                        Sei sicuro di voler eliminare la tipologia<span class="fw-semibold">{{$type->title}}</span> ?
+                        <br>
+                        L'operazione non è reveresibile.
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
 
                         <!-- Form per il destroy -->
-                        <form method="POST" action="{{route('admin.projects.destroy', $project)}}">
+                        <form method="POST" action="{{route('admin.types.destroy', $type)}}">
                         @csrf
                         @method('delete')
                         
-                        <button type="submit" class="btn btn-danger">Cestina</button>
+                        <button type="submit" class="btn btn-danger">Elimina</button>
                         </form>
                     </div>
                 </div>

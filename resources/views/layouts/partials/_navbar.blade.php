@@ -23,7 +23,10 @@
                         <a class="nav-link {{request()->routeIs('home') ? 'active' : ''}}" href="{{route('home') }}">{{ __('Home') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{request()->routeIs('admin.projects.index') ? 'active' : ''}}" href="{{route('admin.projects.index') }}">{{ __('Projects') }}</a>
+                        <a class="nav-link {{request()->routeIs('admin.projects*') ? 'active' : ''}}" href="{{route('admin.projects.index') }}">{{ __('Progetti') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{request()->routeIs('admin.types*') ? 'active' : ''}}" href="{{route('admin.types.index') }}">{{ __('Tipologie') }}</a>
                     </li>
                 </ul>
             @endauth
