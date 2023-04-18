@@ -28,8 +28,9 @@
             <div class="col-10 border pt-5">
                 <div class="row justify-content-center">
                     <div class="col-4 my-5">
-                        <p class="fw-semibold">
+                        <p class="fw-semibold d-flex justify-content-center align-items-center">
                             {{$project->type?->label}}
+                            <span class="circle-color-preview ms-2" style="background-color: {{$project->type?->color}}"></span>
                         </p>
                     </div>
                     <div class="col-12">

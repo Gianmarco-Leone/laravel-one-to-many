@@ -9,6 +9,11 @@
         <img src="{{$project->getImageUri()}}" alt="{{$project->title}}">
     </figure>
 
+    <p class="text-center fs-5">
+        <span class="fw-semibold">Tecnologia usata:</span>
+        {{$project->type?->label}}
+    </p>
+
     <p class="text-center fs-4">
         {{$project->description}}
     </p>
