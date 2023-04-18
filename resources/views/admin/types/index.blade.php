@@ -123,7 +123,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Sei sicuro di voler eliminare la tipologia<span class="fw-semibold">{{$type->title}}</span> ?
+                        Sei sicuro di voler eliminare la tipologia <span class="fw-semibold">{{$type->label}}</span> ?
                         <br>
                         L'operazione non è reveresibile.
                     </div>

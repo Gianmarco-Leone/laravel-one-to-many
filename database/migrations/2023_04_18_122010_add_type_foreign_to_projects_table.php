@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
             // Aggiungo la colonna type_id alla table projects che contiene una foreign key
+            // * METODO LUNGO
+            // $table->unsignedBigInteger('type_id')->nullable();
+            // $table->foreign('type_id')->references('id')->on('types');
+
+             // * METODO BREVE
             $table->foreignId('type_id')->nullable()->constrained();
         });
     }

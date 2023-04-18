@@ -39,7 +39,7 @@ class TypeController extends Controller
     public function create()
     {
         $type = new Type;
-        return view('admin.types.form', compact('types'));
+        return view('admin.types.form', compact('type'));
     }
 
     /**
@@ -58,7 +58,7 @@ class TypeController extends Controller
         $type = new Type;
         $type->fill($data);
         $type->save();
-        return to_route('admin.types.show', $type)
+        return to_route('admin.types.index', $type)
             ->with('message_content', 'Tipologia creata con successo');
     }
 
@@ -72,7 +72,7 @@ class TypeController extends Controller
     // * Funzione per visualizzare dettaglio elemento DB
     public function show(Type $type)
     {
-        return view('admin.types.show', compact('type'));
+        return view('admin.types.index', compact('type'));
     }
 
 
@@ -86,7 +86,7 @@ class TypeController extends Controller
     // * Funzione per visualizzare dettaglio elemento DB
     public function edit(Type $type)
     {
-        return view('admin.types.form', compact('types'));
+        return view('admin.types.form', compact('type'));
     }
 
     /**
@@ -102,7 +102,7 @@ class TypeController extends Controller
         $data = $this->validation($request->all());
 
         $type->update($data);
-        return to_route('admin.types.show', $type)
+        return to_route('admin.types.index', $type)
         ->with('message_content', 'Tipologia ' . $type->title . ' modificata con successo');
     }
 
