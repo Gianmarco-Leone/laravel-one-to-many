@@ -44,6 +44,14 @@
                     </a>
                 </th>
                 <th scope="col">
+                    <a href="{{route('admin.projects.index')}}?sort=type_id&order={{$sort == 'type_id' && $order != 'desc' ? 'desc' : 'asc'}}">
+                        Tipologia
+                        @if ($sort == 'type_id')
+                        <i class="bi bi-caret-down-fill d-inline-block @if($order == 'desc') rotate-180 @endif"></i>
+                        @endif
+                    </a>
+                </th>
+                <th scope="col">
                     <a href="{{route('admin.projects.index')}}?sort=description&order={{$sort == 'description' && $order != 'desc' ? 'desc' : 'asc'}}">
                         Descrizione
                         @if ($sort == 'description')
@@ -75,6 +83,11 @@
                 <tr>
                     <th scope="row">{{$project->id}}</th>
                     <td>{{$project->title}}</td>
+                    <td>
+                        <span class="badge rounded-pill" style="background-color: {{$project->type?->color}}">
+                            {{$project->type?->label}}
+                        </span>
+                    </td>
                     <td>{{$project->getAbstract()}}</td>
                     <td>{{$project->created_at}}</td>
                     <td>{{$project->updated_at}}</td>

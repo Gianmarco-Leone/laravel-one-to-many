@@ -41,6 +41,23 @@
                             </div>
                             @enderror
                         </div>
+
+                        <div class="col-12 mb-4">
+                            <label for="type_id" class="form-label">
+                                Tipologia    
+                            </label> 
+                            <select name="type_id" id="type_id" class="@error('type_id') is-invalid @enderror form-select">
+                                <option value="">Non specificato</option>
+                                @foreach($types as $type)
+                                    <option value="{{$type->id}}" @if(old('type_id', $project->type_id) == $type->id) selected @endif>{{$type->label}}</option>
+                                @endforeach
+                            </select>
+                            @error('type_id')
+                            <div class="invalid-feedback">
+                                {{$message}}
+                            </div>
+                            @enderror
+                        </div>
     
                         <div class="col-8">
                             <label for="image" class="form-label">

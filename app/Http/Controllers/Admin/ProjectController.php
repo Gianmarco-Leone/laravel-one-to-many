@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Project;
 use App\Http\Controllers\Controller;
+
+use App\Models\Project;
+use App\Models\Type;
+
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -38,7 +42,8 @@ class ProjectController extends Controller
     public function create()
     {
         $project = new Project;
-        return view('admin.projects.form', compact('project'));
+        $types = Type::orderBy('label')->get();
+        return view('admin.projects.form', compact('project', 'types'));
     }
 
     /**
@@ -93,7 +98,8 @@ class ProjectController extends Controller
     // * Funzione per visualizzare form di modifica elemento nel DB
     public function edit(Project $project)
     {
-        return view('admin.projects.form', compact('project'));
+        $types = Type::orderBy('label')->get();
+        return view('admin.projects.form', compact('project', 'types'));
     }
 
     /**
@@ -201,6 +207,7 @@ class ProjectController extends Controller
             'image'=>'nullable|image|mimes:jpg,jpeg,png',
             'description'=>'required|string',
             'is_published' => 'boolean',
+            'type_id' => 'nullable|exists:types,id'
             ],
             [
             'title.required'=>"Il titolo è obbligatorio",
@@ -213,7 +220,9 @@ class ProjectController extends Controller
             'description.required'=>"La descrizione è obbligatoria",
             'description.string'=>"La descrizione deve essere una stringa",
 
-            'is_published.boolean' => '"Pubblicato" puù assumere solo valori di 1 o 0'
+            'is_published.boolean' => '"Pubblicato" puù assumere solo valori di 1 o 0',
+
+            'type_id.exists' => 'L\'ID della tipologia non è valido'
             ],
         )->validate();
     }
