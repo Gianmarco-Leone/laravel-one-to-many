@@ -28,7 +28,7 @@
         <thead>
             <tr>
                 <th scope="col">
-                    <a href="{{route('admin.projects.index')}}?sort=id&order={{$sort == 'id' && $order != 'desc' ? 'desc' : 'asc'}}">
+                    <a href="{{route('admin.projects.trash')}}?sort=id&order={{$sort == 'id' && $order != 'desc' ? 'desc' : 'asc'}}">
                         ID
                         @if ($sort == 'id')
                         <i class="bi bi-caret-down-fill d-inline-block @if($order == 'desc') rotate-180 @endif"></i>
@@ -36,7 +36,7 @@
                     </a>
                 </th>
                 <th scope="col">
-                    <a href="{{route('admin.projects.index')}}?sort=title&order={{$sort == 'title' && $order != 'desc' ? 'desc' : 'asc'}}">
+                    <a href="{{route('admin.projects.trash')}}?sort=title&order={{$sort == 'title' && $order != 'desc' ? 'desc' : 'asc'}}">
                         Titolo
                         @if ($sort == 'title')
                         <i class="bi bi-caret-down-fill d-inline-block @if($order == 'desc') rotate-180 @endif"></i>
@@ -44,7 +44,7 @@
                     </a>
                 </th>
                 <th scope="col">
-                    <a href="{{route('admin.projects.index')}}?sort=type_id&order={{$sort == 'type_id' && $order != 'desc' ? 'desc' : 'asc'}}">
+                    <a href="{{route('admin.projects.trash')}}?sort=type_id&order={{$sort == 'type_id' && $order != 'desc' ? 'desc' : 'asc'}}">
                         Tipologia
                         @if ($sort == 'type_id')
                         <i class="bi bi-caret-down-fill d-inline-block @if($order == 'desc') rotate-180 @endif"></i>
@@ -52,7 +52,7 @@
                     </a>
                 </th>
                 <th scope="col">
-                    <a href="{{route('admin.projects.index')}}?sort=description&order={{$sort == 'description' && $order != 'desc' ? 'desc' : 'asc'}}">
+                    <a href="{{route('admin.projects.trash')}}?sort=description&order={{$sort == 'description' && $order != 'desc' ? 'desc' : 'asc'}}">
                         Descrizione
                         @if ($sort == 'description')
                         <i class="bi bi-caret-down-fill d-inline-block @if($order == 'desc') rotate-180 @endif"></i>
@@ -60,7 +60,7 @@
                     </a>
                 </th>
                 <th scope="col">
-                    <a href="{{route('admin.projects.index')}}?sort=created_at&order={{$sort == 'created_at' && $order != 'desc' ? 'desc' : 'asc'}}">
+                    <a href="{{route('admin.projects.trash')}}?sort=created_at&order={{$sort == 'created_at' && $order != 'desc' ? 'desc' : 'asc'}}">
                         Creazione
                         @if ($sort == 'created_at')
                         <i class="bi bi-caret-down-fill d-inline-block @if($order == 'desc') rotate-180 @endif"></i>
@@ -68,7 +68,7 @@
                     </a>
                 </th>
                 <th scope="col">
-                    <a href="{{route('admin.projects.index')}}?sort=updated_at&order={{$sort == 'updated_at' && $order != 'desc' ? 'desc' : 'asc'}}">
+                    <a href="{{route('admin.projects.trash')}}?sort=updated_at&order={{$sort == 'updated_at' && $order != 'desc' ? 'desc' : 'asc'}}">
                         Ultima modifica
                         @if ($sort == 'updated_at')
                         <i class="bi bi-caret-down-fill d-inline-block @if($order == 'desc') rotate-180 @endif"></i>
