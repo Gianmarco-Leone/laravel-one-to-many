@@ -8,6 +8,7 @@ use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 // * Admin
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TypeController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -38,8 +39,12 @@ Route::middleware('auth')
         Route::put('projects/{project}/restore', [ProjectController::class, 'restore'])->name('projects.restore');
         Route::delete('projects/{project}/forcedelete', [ProjectController::class, 'forcedelete'])->name('projects.forcedelete');
         
+        // * Risorsa Project
         Route::resource('projects', ProjectController::class)
         ->parameters(['projects' => 'project:slug']);
+
+        // * Risorsa Type
+        Route::resource('types', TypeController::class);
     });
 
 // * Rotte profilo
