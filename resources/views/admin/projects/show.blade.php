@@ -27,6 +27,11 @@
         <div class="row justify-content-center my-5">
             <div class="col-10 border pt-5">
                 <div class="row justify-content-center">
+                    <div class="col-4 my-5">
+                        <p class="fw-semibold">
+                            {{$project->type?->label}}
+                        </p>
+                    </div>
                     <div class="col-12">
                         <img src="{{$project->getImageUri()}}" alt="{{$project->title}}" width="300">
                     </div>
