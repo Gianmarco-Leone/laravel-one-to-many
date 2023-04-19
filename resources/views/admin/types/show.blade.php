@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-4 my-5">
                         <p class="fw-semibold">
-                            {{$type->color}}
+                            {!!$type->getBadgeHTML()!!}
                         </p>
                     </div>
                 </div>

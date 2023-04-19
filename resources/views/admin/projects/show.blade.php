@@ -24,24 +24,30 @@
             </a>
         </div>
 
-        <div class="row justify-content-center my-5">
-            <div class="col-10 border pt-5">
-                <div class="row justify-content-center">
-                    <div class="col-4 my-5">
-                        <p class="fw-semibold d-flex justify-content-center align-items-center">
-                            {{$project->type?->label}}
-                            <span class="circle-color-preview ms-2" style="background-color: {{$project->type?->color}}"></span>
+        <div class="card clearfix my-4">
+            <div class="card-body">
+                <figure class="float-end ms-5 mb-3">
+                    <img src="{{$project->getImageUri()}}" alt="{{$project->title}}" width="300">
+                    <figcaption>
+                        <p class="text-muted text-secondary m-0">
+                            {{$project->slug}}
                         </p>
-                    </div>
-                    <div class="col-12">
-                        <img src="{{$project->getImageUri()}}" alt="{{$project->title}}" width="300">
-                    </div>
-                    <div class="col-4 my-5">
-                        <p class="fw-semibold">
-                            {{$project->description}}
-                        </p>
-                    </div>
-                </div>
+                    </figcaption>
+                </figure>
+
+                <p>
+                    <strong>Tipologia:</strong>
+                    @if ($project->type)
+                        {!!$project->type?->getBadgeHTML()!!}
+                    @else
+                        Tipologia non specificata
+                    @endif
+                </p>
+
+                <p>
+                    <strong>Descrizione:</strong>
+                    {{$project->description}}
+                </p>
             </div>
         </div>
     </section>
