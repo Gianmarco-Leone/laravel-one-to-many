@@ -15,4 +15,11 @@ class Type extends Model
     public function projects() {
         return $this->hasMany(Project::class);
     }
+
+    // * HTML
+
+    // Funzione che restituisce una pills html
+    public function getBadgeHTML() {
+        return '<span class="badge rounded-pill" style="background-color:' . $this->color . '">'. $this->label .'</span>';
+    }
 }

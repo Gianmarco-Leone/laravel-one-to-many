@@ -77,7 +77,7 @@
                         @endif
                     </a>
                 </th>
-                <th scope="col">Active</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -85,11 +85,7 @@
                 <tr>
                     <th scope="row">{{$project->id}}</th>
                     <td>{{$project->title}}</td>
-                    <td>
-                        <span class="badge rounded-pill" style="background-color: {{$project->type?->color}}">
-                            {{$project->type?->label}}
-                        </span>
-                    </td>
+                    <td>{!!$project->type?->getBadgeHTML()!!}</td>
                     <td>{{$project->getAbstract()}}</td>
                     <td>{{$project->created_at}}</td>
                     <td>{{$project->updated_at}}</td>
@@ -108,7 +104,7 @@
                 </tr>
             @empty
                 <tr>
-                    <th scope="row">Nessun risultato</th>
+                    <td colspan="7" scope="row">Nessun risultato</td>
                 </tr>
             @endforelse
         </tbody>

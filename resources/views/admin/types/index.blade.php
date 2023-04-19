@@ -100,7 +100,7 @@
                 </tr>
             @empty
                 <tr>
-                    <th scope="row">Nessun risultato</th>
+                    <td colspan="6">Nessun risultato</td>
                 </tr>
             @endforelse
         </tbody>
