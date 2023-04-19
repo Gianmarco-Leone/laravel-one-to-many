@@ -20,9 +20,9 @@ return new class extends Migration
             // $table->foreign('type_id')->references('id')->on('types');
 
              // * METODO BREVE
-            $table->foreignId('type_id')->nullable()->constrained();
+            $table->foreignId('type_id')->after('id')->nullable()->constrained()->nullOnDelete();
 
-            // ? Su phpMyAdmin nella relation view tra le due table, imposto ON DELETE = SET NULL così da poter eliminare una foreign key dalla tabella anche dopo averla associata all'elemento di un'altra tabella
+            // ? Se non aggiungessi alla fine il metodo nullOnDelete() su phpMyAdmin nella relation view tra le due table, dovrei impostare ON DELETE = SET NULL così da poter eliminare una foreign key dalla tabella anche dopo averla associata all'elemento di un'altra tabella
         });
     }
 
